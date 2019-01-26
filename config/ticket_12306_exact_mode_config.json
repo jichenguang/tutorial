@@ -1,12 +1,12 @@
 {
-  "username":"username",
-  "password":"password",
-  "from_station":"SHH",
-  "from_station_text":"广州",
-  "to_station":"WCN",
-  "to_station_text":"武昌",
-  "travel_date":"'2018-12-27'",
-  "passenger_list":["张三","李四"],
-  "train_code":"G552",
+  "username":"45462001@qq.com",
+  "password":"mljicj00",
+  "from_station":"hankou",
+  "from_station_text":"汉口",
+  "to_station":"beijingxi",
+  "to_station_text":"北京西",
+  "travel_date":"'2019-01-17'",
+  "passenger_list":["汲晨光","叶红星"],
+  "train_code":"G524",
   "train_seat":["二等座","一等座"]
 }

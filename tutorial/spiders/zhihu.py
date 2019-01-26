@@ -13,7 +13,7 @@ class ZhihuSpider(scrapy.Spider):
 
     # 模拟请求的headers，非常重要，不设置也可能知乎不让你访问请求
     headers = {
-        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.80 Safari/537.36",
+        "User-Agent": "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36",
         "HOST": "www.zhihu.com"
     }
 

@@ -62,12 +62,12 @@ def get_train_no(train_code,train_date):
     with open('./config/train_list.txt', 'rb') as of:
         text = of.readline()
         tt = text.decode("utf-8")
-        ss = tt.replace('var train_list =','').replace("},{", "},\n{")
+        ss = tt.replace('var train_list = ', '').replace("},{", "},\n{")
 
         d = json.loads(ss)
 
         for k in d[train_date][c]:
-            if k['station_train_code'].find(train_code+'(')>-1:
+            if k['station_train_code'].find(train_code+'(') > -1:
                 return k['train_no']
 
 def wait_loading_or_exit(driver,xpath,msg='等待加载完成'):
@@ -156,18 +156,20 @@ def get_right_train(buy_train_code,ticket_12306_config_dict):
 if __name__ == '__main__':
     print_t('开始读取配置文件')
     try:
-        with open('./config/ticket_12306_exact_mode_config.json','r') as f:
+        #with open('./config/ticket_12306_exact_mode_config.json', 'r') as f:
+        with open('./config/ticket_12306_exact_mode_config.json','r',encoding='UTF-8') as f:
             ticket_12306_config = f.read()
     except FileNotFoundError as e:
         print_t('没有找到配置文件，系统已退出，请先下载配置文件ticket_12306_config.json到当前运行环境目录下的config目录')
         exit(1)
 
     ticket_12306_config_dict = json.loads(ticket_12306_config)
-    print_t('配置文件读取成功')
+    print_t('配置文件读取成功--晨光')
 
     print_t('开始加载全部城市列表')
     try:
-        with open('./config/ticket_12306_citylist.json','r') as f:
+        # with open('./config/ticket_12306_citylist.json','r',) as f:
+        with open('./config/ticket_12306_citylist.json', 'r', encoding='UTF-8') as f:
             ticket_12306_citylist = f.read()
             ticket_12306_citylist_dict = json.loads(ticket_12306_citylist)
     except FileNotFoundError as e:
@@ -199,7 +201,10 @@ if __name__ == '__main__':
         get_train_list()
         print_t('下载当前12306全部车次信息，50M左右，下载完成')
 
-    train_no = get_train_no(ticket_12306_config_dict['train_code'],ticket_12306_config_dict['travel_date'].replace('\'',''))
+    train_no = get_train_no(ticket_12306_config_dict['train_code'],
+                            ticket_12306_config_dict['travel_date'].replace("\"", " "))
+
+
     if not train_no:
         print_t('你当前要购买的车次不存在，无法购买，系统将退出')
 
