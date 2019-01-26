@@ -62,8 +62,7 @@ def get_train_no(train_code,train_date):
     with open('./config/train_list.txt', 'rb') as of:
         text = of.readline()
         tt = text.decode("utf-8")
-        ss = tt.replace('var train_list = ', '').replace("},{", "},\n{")
-
+        ss = tt.replace('var train_list =',  '').replace("},{", "},\n{")
         d = json.loads(ss)
 
         for k in d[train_date][c]:
@@ -202,7 +201,7 @@ if __name__ == '__main__':
         print_t('下载当前12306全部车次信息，50M左右，下载完成')
 
     train_no = get_train_no(ticket_12306_config_dict['train_code'],
-                            ticket_12306_config_dict['travel_date'].replace("\"", " "))
+                            ticket_12306_config_dict['travel_date'].replace('\'', ''))
 
 
     if not train_no:
